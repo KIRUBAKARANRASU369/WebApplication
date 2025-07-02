@@ -3,8 +3,7 @@ package com.example.WebApplication.controller;
 import com.example.WebApplication.model.Product;
 import com.example.WebApplication.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,8 +13,27 @@ public class ProductController {
     @Autowired
     ProductService service;
 
-    @RequestMapping("/Products")
+    //CRUD - CREATE READ UPDATE DELETE
+    @RequestMapping(value = "/products",method =  RequestMethod.GET)
     public List<Product> getProduts(){
         return service.getProducts();
     }
+    @RequestMapping("/products/{product_id}")
+    public Product getProdutsById(@PathVariable int product_id){
+        return service.getProductById(product_id);
+    }
+
+//  @RequestMapping(value = "/products",method =  RequestMethod.POST)
+    @PostMapping("/addProducts")
+    public void createProduct(@RequestBody Product product){ //JSON object -> JAVA Object
+        service.createProduct(product);
+    }
+
+    @PutMapping("/products")
+    public void updateProduct(@RequestBody Product product){
+        service.updateProduct(product);
+    }
+
 }
+
+//JAVA object and JSON object
