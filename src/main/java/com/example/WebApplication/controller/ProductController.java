@@ -18,13 +18,13 @@ public class ProductController {
     public List<Product> getProduts(){
         return service.getProducts();
     }
-    @RequestMapping("/products/{product_id}")
+    @GetMapping("/products/{product_id}")
     public Product getProdutsById(@PathVariable int product_id){
         return service.getProductById(product_id);
     }
 
 //  @RequestMapping(value = "/products",method =  RequestMethod.POST)
-    @PostMapping("/addProducts")
+    @PostMapping("/products")
     public void createProduct(@RequestBody Product product){ //JSON object -> JAVA Object
         service.createProduct(product);
     }
@@ -34,6 +34,10 @@ public class ProductController {
         service.updateProduct(product);
     }
 
+    @DeleteMapping("/products/{product_id}")
+    public void deleteProduct(@PathVariable int product_id){
+        service.deleteProduct(product_id);
+    }
 }
 
 //JAVA object and JSON object

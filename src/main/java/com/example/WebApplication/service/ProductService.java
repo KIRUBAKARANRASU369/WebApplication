@@ -1,5 +1,6 @@
 package com.example.WebApplication.service;
 
+import com.example.WebApplication.Repo.ProductRepo;
 import com.example.WebApplication.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,34 +11,30 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@Component
+@Service
 public class ProductService {
-    List<Product> products = new ArrayList<>( Arrays.asList(
-            new Product(101,"Cycle","Vehicle for locomotion",5000),
-            new Product(102,"Watch","master time keeper",10000)));
+//    List<Product> products = new ArrayList<>( Arrays.asList(
+//            new Product(101,"Cycle","Vehicle for locomotion",5000),
+//            new Product(102,"Watch","master time keeper",10000)));
+
+    @Autowired
+    ProductRepo productRepo;
 
     public List<Product> getProducts(){
-        return products;
+        return productRepo.findAll();
     }
     public Product getProductById(int product_id){
-        for(Product p : products) {
-            if (p.getId() == product_id) {
-                return p;
-            }
-        }
-        return null;
+        return productRepo.findById(product_id).get();
     }
-
     public void createProduct(Product product){
         System.out.println(product.toString());
-        products.add(product);
+        productRepo.save(product);
     }
     public void updateProduct(Product product){
-        for(int i=0 ; i< products.size() ; i++){
-            if (products.get(i).getId() == product.getId()) {
-                products.set(i,product);
-            }
-        }
+        productRepo.save(product);
+    }
+    public void deleteProduct(int product_id){
+        productRepo.deleteById(product_id);
     }
 
 }
