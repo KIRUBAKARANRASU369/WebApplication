@@ -1,12 +1,14 @@
 package com.example.WebApplication.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Product {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int product_id;
     private String product_name;
     private String product_description;
@@ -36,3 +38,19 @@ public class Product {
                 '}';
     }
 }
+
+/*
+* id
+* name
+* description
+* brand
+* price
+* category
+* releaseDate
+* availability
+* quantity
+* Image
+*
+* @AllargConstrucotr
+* NoArgsConstructor
+* */

@@ -27,7 +27,6 @@ public class ProductService {
         return productRepo.findById(product_id).get();
     }
     public void createProduct(Product product){
-        System.out.println(product.toString());
         productRepo.save(product);
     }
     public void updateProduct(Product product){
