@@ -5,7 +5,9 @@ import com.example.WebApplication.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,11 +26,15 @@ public class ProductService {
         return productRepo.findAll();
     }
     public Product getProductById(int product_id){
-        return productRepo.findById(product_id).get();
+        return productRepo.findById(product_id).orElse(null);
     }
-    public void createProduct(Product product){
-        productRepo.save(product);
+    public Product createProduct(Product product, MultipartFile imageFile) throws IOException {
+        product.setImageName(imageFile.getOriginalFilename());
+        product.setImageType(imageFile.getContentType());
+        product.setImageData(imageFile.getBytes());
+        return productRepo.save(product);
     }
+
     public void updateProduct(Product product){
         productRepo.save(product);
     }

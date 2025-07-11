@@ -1,0 +1,7 @@
+-- INSERT INTO product (id, name, description, brand, price, category, release_Date, available, quantity)
+-- VALUES
+--     (1, 'Echo Dot (5th Gen)', 'Smart speaker with Alexa', 'Amazon', 3999.00, 'Electronics', '2023-11-15', true, 120),
+--     (2, 'Galaxy Watch 6', 'Smartwatch with health tracking', 'Samsung', 28999.00, 'Wearables', '2024-02-10', true, 75),
+--     (3, 'Instant Pot Duo', '7-in-1 Electric Pressure Cooker', 'Instant Brands', 9499.00, 'Home Appliances', '2022-07-20', true, 50),
+--     (4, 'Kindle Paperwhite', 'Waterproof e-reader with 300ppi display', 'Amazon', 13999.00, 'Books & Media', '2023-09-05', true, 200),
+--     (5, 'Sony WH-1000XM5', 'Wireless Noise Cancelling Headphones', 'Sony', 29999.00, 'Audio', '2023-12-01', true, 35);

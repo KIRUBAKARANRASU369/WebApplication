@@ -1,56 +1,131 @@
 package com.example.WebApplication.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int product_id;
-    private String product_name;
-    private String product_description;
-    private int product_price;
+    private int id;
+    private String name;
+    private String description;
+    private String brand;
+    private BigDecimal price;
+    private String category;
+    @JsonFormat(shape =  JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
+    private Date releaseDate;
+    private boolean available;
+    private int quantity;
 
-    public Product() {}
+    private String imageName;
+    private String imageType;
+    @Lob
+    private byte[] imageData;
 
-    public int getProduct_id() { return product_id; }
-    public void setProduct_id(int product_id) { this.product_id = product_id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getProduct_name() { return product_name; }
-    public void setProduct_name(String product_name) { this.product_name = product_name; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getProduct_description() { return product_description; }
-    public void setProduct_description(String product_description) { this.product_description = product_description; }
+    public String getName() {
+        return name;
+    }
 
-    public int getProduct_price() { return product_price; }
-    public void setProduct_price(int product_price) { this.product_price = product_price; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "product_id=" + product_id +
-                ", product_name='" + product_name + '\'' +
-                ", product_description='" + product_description + '\'' +
-                ", product_price=" + product_price +
-                '}';
+    public String getDesc() {
+        return description;
+    }
+
+    public void setDesc(String desc) {
+        this.description = desc;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 }
-
-/*
-* id
-* name
-* description
-* brand
-* price
-* category
-* releaseDate
-* availability
-* quantity
-* Image
-*
-* @AllargConstrucotr
-* NoArgsConstructor
-* */
